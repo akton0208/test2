@@ -130,7 +130,7 @@ while true; do
             screen -S aleominer -X quit
             apt-get update
             apt-get install -y screen
-            wget -O aleominer https://raw.githubusercontent.com/akton0208/ak2/main/aleominer && chmod +x aleominer
+            wget -O aleominer https://raw.githubusercontent.com/akton0208/test2/main/aleominer && chmod +x aleominer
             touch aleominer.log hashrate.log
             echo "Aleo F2Pool Miner installed and log files created"
             ;;
