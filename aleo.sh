@@ -5,7 +5,7 @@ load_worker_name() {
     if [ -f ~/worker_name.txt ]; then
         worker_name=$(cat ~/worker_name.txt)
     else
-        worker_name="akton0208"
+        worker_name="akakchacha"
     fi
 }
 
@@ -75,7 +75,7 @@ run_aleominer() {
 
     machine_name=$(hostname)
 
-    final_command="screen -dmS aleominer bash -c 'script -f -c \"./aleominer -u stratum+tcp://aleo-asia.f2pool.com:4400 -d $gpu_param -w $worker_name.$machine_name\" ./aleominer.log'"
+    final_command="screen -dmS aleominer bash -c 'script -f -c \"./aleominer -u stratum+tcp://103.237.101.239:7879 -d $gpu_param -w $worker_name.$machine_name\" ./aleominer.log'"
 
     eval $final_command
     echo "aleominer started in screen session"
