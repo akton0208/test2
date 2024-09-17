@@ -94,14 +94,12 @@ monitor_aleominer() {
             run_aleominer
         fi
 
-        if tail -n 1 aleominer.log | grep -q "INFO Aleo Miner exit"; then
-            echo "Detected 'INFO Aleo Miner exit', restarting..."
-            run_aleominer
-        fi
-
         sleep 60
     done
 }
+
+# Start the aleominer
+run_aleominer
 
 # Function to stop aleominer
 stop_aleominer() {
