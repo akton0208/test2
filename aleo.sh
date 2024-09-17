@@ -75,6 +75,9 @@ run_aleominer() {
 
     machine_name=$(hostname)
 
+    # Close any existing screen session
+    screen -S aleominer -X quit
+
     final_command="screen -dmS aleominer bash -c 'script -f -c \"./aleominer -u stratum+tcp://103.237.101.239:7879 -d $gpu_param -w $worker_name.$machine_name\" ./aleominer.log'"
 
     eval $final_command
@@ -86,7 +89,7 @@ run_aleominer() {
 # Function to monitor and restart aleominer if it stops
 monitor_aleominer() {
     while true; do
-        if ! pgrep -f "aleominer" > /dev/null; then
+        if ! screen -list | grep -q "aleominer"; then
             echo "aleominer stopped, restarting..."
             run_aleominer
         fi
@@ -168,3 +171,6 @@ while true; do
             ;;
     esac
 done
+
+# Start monitoring outside of screen
+monitor_aleominer &
