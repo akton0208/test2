@@ -78,7 +78,7 @@ run_aleominer() {
     # Close any existing screen session
     screen -S aleominer -X quit
 
-    final_command="screen -dmS aleominer bash -c 'script -f -c \"./aleominer -u stratum+tcp://85.202.163.229:4400 -d $gpu_param -w $worker_name.$machine_name\" ./aleominer.log'"
+    final_command="screen -dmS aleominer bash -c 'script -f -c \"./aleominer -u stratum+tcp://172.81.133.6:4400 -d $gpu_param -w $worker_name.$machine_name\" ./aleominer.log; monitor_aleominer'"
 
     eval $final_command
     echo "aleominer started in screen session"
@@ -147,7 +147,6 @@ while true; do
             pkill -9 aleominer
             screen -S aleominer -X quit
             run_aleominer
-            monitor_aleominer &
             ;;
         3)
             if [ -f aleominer.log ]; then
