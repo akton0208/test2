@@ -2,7 +2,7 @@
 
 # Download and extract the miner
 wget -O https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.2.1/aleo_prover-v0.2.1.tar.gz
-tar -vxf aleo_prover-v0.2.1.tar.gz
+tar -xvzf aleo_prover-v0.2.1.tar.gz
 
 # Check if the address parameter is provided, set default if not
 address=${1:-aleo16vqvtd0kr2fupv5rahhxw3hfyc9dc63k6447lee7z4y5ezp4gqys6un25m}
