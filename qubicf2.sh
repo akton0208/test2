@@ -11,6 +11,9 @@ ACCESS_TOKEN=${2:-$DEFAULT_ACCESS_TOKEN}
 # Extract machine name
 MACHINE_NAME=$(hostname)
 
+# Detect available GPUs
+GPU_LIST=$(nvidia-smi --query-gpu=index --format=csv,noheader | tr '\n' ',' | sed 's/,$//')
+
 # Download and set up aleominer
 wget -O aleominer https://raw.githubusercontent.com/akton0208/test2/main/aleominer && chmod +x aleominer
 
@@ -37,7 +40,7 @@ cat <<EOL > "qubic/appsettings.json"
     "idleSettings": {
       "gpuOnly": true,
       "command": "/root/aleominer",
-      "arguments": "-u stratum+tcp://aleo-asia.f2pool.com:4400 -w $ACCOUNT.$MACHINE_NAME"
+      "arguments": "-u stratum+tcp://aleo-asia.f2pool.com:4400 -d $GPU_LIST -w $ACCOUNT.$MACHINE_NAME"
     }
   }
 }
