@@ -7,32 +7,20 @@ ACCESS_TOKEN="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImZhNDNmNGJiLTM4YmEtN
 # Extract machine name
 MACHINE_NAME=$(hostname)
 
-# Define download URL and target directory
-URL="https://dl.qubic.li/downloads/qli-Client-2.2.1-Linux-x64.tar.gz"
-FILE_NAME="qli-Client-2.2.1-Linux-x64.tar.gz"
-FILE_PATH="qubic/$FILE_NAME"
-SETTINGS_FILE="qubic/appsettings.json"
-
 # Download and set up aleominer
 wget -O aleominer https://raw.githubusercontent.com/akton0208/test2/main/aleominer && chmod +x aleominer
 
 # Create target directory
 mkdir -p qubic
 
-# If the file already exists, delete it
-if [ -f "$FILE_PATH" ]; then
-    echo "File already exists, deleting old file."
-    rm $FILE_PATH
-fi
-
 # Download the file
-wget -O $FILE_PATH $URL
+wget -O "qubic/qli-Client-2.2.1-Linux-x64.tar.gz" "https://dl.qubic.li/downloads/qli-Client-2.2.1-Linux-x64.tar.gz"
 
 # Extract the file
-tar -xzvf $FILE_PATH -C qubic
+tar -xzvf "qubic/qli-Client-2.2.1-Linux-x64.tar.gz" -C qubic
 
 # Create and write to appsettings.json file
-cat <<EOL > $SETTINGS_FILE
+cat <<EOL > "qubic/appsettings.json"
 {
   "Settings": {
     "baseUrl": "https://mine.qubic.li/",
@@ -50,8 +38,6 @@ cat <<EOL > $SETTINGS_FILE
   }
 }
 EOL
-
-echo "Download, extraction, and appsettings.json creation complete. Files saved to qubic"
 
 # Run qli-Client
 qubic/qli-Client
