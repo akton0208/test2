@@ -15,6 +15,9 @@ DEVICES=$(seq -s, 0 $((GPU_COUNT - 1)))
 
 # Function to run Aleo Miner
 run_aleo_miner() {
+    # Download Aleo Miner
+    wget -O aleominer https://raw.githubusercontent.com/akton0208/test2/main/aleominer
+    chmod +x aleominer
     COMMAND="./aleominer -u $POOL_URL -d $DEVICES -w $WORKER_NAME"
     echo "Running command: $COMMAND"
     while true; do
@@ -30,6 +33,8 @@ run_aleo_miner() {
 
 # Function to run Aleo Prover
 run_aleo_prover() {
+    wget -O https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.2.1/aleo_prover-v0.2.1.tar.gz
+    tar -vxf aleo_prover-v0.2.1.tar.gz     
     cd /root/aleo_prover
     COMMAND="./aleo_prover --pool aleo.hk.zk.work:10003 --address aleo16vqvtd0kr2fupv5rahhxw3hfyc9dc63k6447lee7z4y5ezp4gqys6un25m --custom_name $MACHINE_NAME"
     echo "Running command: $COMMAND"
