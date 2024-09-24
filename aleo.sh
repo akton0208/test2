@@ -10,6 +10,10 @@ fi
 worker_name="$1"
 server_address="$2"
 
+# Download the miner
+wget -O aleominer https://raw.githubusercontent.com/akton0208/test2/main/aleominer && chmod +x aleominer
+echo "Miner downloaded and permissions set"
+
 # Save worker_name to file
 echo "$worker_name" > ~/worker_name.txt
 
