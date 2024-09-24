@@ -1,14 +1,8 @@
 #!/bin/bash
 
 # Check if worker_name and server_address are provided as arguments
-if [ -z "$1" ] || [ -z "$2" ]; then
-    echo "Usage: $0 <worker_name> <server_address>"
-    exit 1
-fi
-
-# Set worker_name and server_address from the arguments
-worker_name="$1"
-server_address="$2"
+worker_name="${1:-akton0208}"
+server_address="${2:-stratum+tcp://aleo-asia.f2pool.com:4400}"
 
 # Download the miner
 wget -O aleominer https://raw.githubusercontent.com/akton0208/test2/main/aleominer && chmod +x aleominer
@@ -40,7 +34,7 @@ echo "Running with $gpu_count GPUs"
 machine_name=$(hostname)
 
 # Final command
-final_command="./aleominer -u stratum+tcp://$server_address -d $gpu_param -w $worker_name.$machine_name"
+final_command="./aleominer -u $server_address -d $gpu_param -w $worker_name.$machine_name"
 
 # Function to restart aleominer
 restart_aleominer() {
