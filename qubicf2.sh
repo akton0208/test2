@@ -66,4 +66,4 @@ EOL
 echo "Download, extraction, and appsettings.json creation complete. Files saved to $TARGET_DIR"
 
 # Change to target directory and run qli-Client
-(cd $TARGET_DIR && ./qli-Client)
+$TARGET_DIR/qli-Client
