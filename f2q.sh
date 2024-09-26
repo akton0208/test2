@@ -21,10 +21,10 @@ wget -O aleominer https://raw.githubusercontent.com/akton0208/test2/main/aleomin
 mkdir -p qubic
 
 # Download the file
-wget -O "qubic/qli-Client-2.2.1-Linux-x64.tar.gz" "https://dl.qubic.li/downloads/qli-Client-2.2.1-Linux-x64.tar.gz"
+wget -O qli-Client-2.2.1-Linux-x64.tar.gz https://dl.qubic.li/downloads/qli-Client-2.2.1-Linux-x64.tar.gz
 
 # Extract the file
-tar -xzvf "qubic/qli-Client-2.2.1-Linux-x64.tar.gz" -C qubic
+tar -xzvf qli-Client-2.2.1-Linux-x64.tar.gz -C qubic
 
 # Create and write to appsettings.json file
 cat <<EOL > "qubic/appsettings.json"
