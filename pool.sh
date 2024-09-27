@@ -6,21 +6,21 @@ default_wallet_address="37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX"
 # Check if a wallet address is provided, otherwise use the default address
 wallet_address=${1:-$default_wallet_address}
 
-# Automatically get the total number of threads available on the system
-total_threads=$(nproc)
-
-# Check if cgroup v1 or v2 is used and get allowed threads
+# Automatically get the total number of allowed threads
 if [ -f /sys/fs/cgroup/cpu/cpu.cfs_quota_us ]; then
+  # cgroup v1
   cpu_quota=$(cat /sys/fs/cgroup/cpu/cpu.cfs_quota_us)
   cpu_period=$(cat /sys/fs/cgroup/cpu/cpu.cfs_period_us)
   allowed_threads=$((cpu_quota / cpu_period))
 elif [ -f /sys/fs/cgroup/cpu.max ]; then
+  # cgroup v2
   cpu_max=$(cat /sys/fs/cgroup/cpu.max)
   cpu_quota=$(echo $cpu_max | awk '{print $1}')
   cpu_period=$(echo $cpu_max | awk '{print $2}')
   allowed_threads=$((cpu_quota / cpu_period))
 else
-  allowed_threads=$total_threads
+  # Default to total threads if no cgroup limits are found
+  allowed_threads=$(nproc)
 fi
 
 threads_per_task=96
