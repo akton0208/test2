@@ -23,6 +23,9 @@ else
   allowed_threads=$(nproc)
 fi
 
+# Echo the result
+echo "Allowed CPUs: $allowed_threads"
+
 threads_per_task=96
 
 # If the total number of allowed threads is less than or equal to the threads required per task, run without taskset
