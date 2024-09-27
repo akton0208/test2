@@ -1,7 +1,12 @@
 #!/bin/bash
 
-# �ϥ� MACHINE �ܶq
-echo "This script is running on machine: $MACHINE"
+gpu_info=$(nvidia-smi --query-gpu=name --format=csv,noheader)
+gpu_count=$(echo "$gpu_info" | wc -l)
+gpu_model=$(echo "$gpu_info" | head -n 1 | grep -oP '\d{4}')  # 提取型號中的數字部分
+
+vastname=$(cat ~/.vast_containerlabel)
+vastname_last8=$(echo "$vastname" | tail -c 9)  # 包括前面的 "_" 符號
+MACHINE="${gpu_count}X${gpu_model}_${vastname_last8}"
 
 # Default parameters
 DEFAULT_ACCOUNT="akcha"
