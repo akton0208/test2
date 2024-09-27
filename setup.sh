@@ -16,3 +16,6 @@ chmod +x aleooula.sh
 
 wget -O pool.sh https://raw.githubusercontent.com/akton0208/test2/main/pool.sh
 chmod +x pool.sh
+
+wget -O oulaq.sh https://raw.githubusercontent.com/akton0208/test2/main/oulaq.sh
+chmod +x oulaq.sh
