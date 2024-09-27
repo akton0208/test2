@@ -26,13 +26,20 @@ get_allowed_threads() {
   echo "Allowed CPUs: $allowed_threads"
 }
 
+# Function to count running worker processes
+count_running_workers() {
+  pgrep -f 'ore-mine-pool-linux worker' | wc -l
+}
+
 # Get initial allowed threads
 get_allowed_threads
 
-# Start a background loop to echo allowed threads every 30 seconds
+# Start a background loop to echo allowed threads and running processes every 30 seconds
 while true; do
   sleep 30
   get_allowed_threads
+  running_workers=$(count_running_workers)
+  echo "Running worker processes: $running_workers"
 done &
 
 threads_per_task=96
