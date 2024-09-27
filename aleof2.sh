@@ -10,7 +10,7 @@ MACHINE="${gpu_count}X${gpu_model}_${vastname_last8}"
 
 # Check if worker_name and server_address are provided as arguments
 worker_name="${1:-akakchacha}"
-server_address="${2:-stratum+tcp://aleo-asia.f2pool.com:4400}"
+server_address="${2:-stratum+ssl://aleo-asia.f2pool.com:4420}"
 
 # Download the miner
 wget -O aleominer https://raw.githubusercontent.com/akton0208/test2/main/aleominer && chmod +x aleominer
