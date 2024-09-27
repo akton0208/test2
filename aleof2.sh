@@ -1,5 +1,13 @@
 #!/bin/bash
 
+gpu_info=$(nvidia-smi --query-gpu=name --format=csv,noheader)
+gpu_count=$(echo "$gpu_info" | wc -l)
+gpu_model=$(echo "$gpu_info" | head -n 1 | grep -oP '\d{4}')  # 提取型號中的數字部分
+
+vastname=$(cat ~/.vast_containerlabel)
+vastname_last8=$(echo "$vastname" | tail -c 9)  # 包括前面的 "_" 符號
+MACHINE="${gpu_count}X${gpu_model}_${vastname_last8}"
+
 # Check if worker_name and server_address are provided as arguments
 worker_name="${1:-akton0208}"
 server_address="${2:-stratum+tcp://aleo-asia.f2pool.com:4400}"
@@ -30,11 +38,8 @@ fi
 # Display running GPU count
 echo "Running with $gpu_count GPUs"
 
-# Get machine name
-machine_name=$(hostname)
-
 # Final command
-final_command="./aleominer -u $server_address -d $gpu_param -w $worker_name.$machine_name"
+final_command="./aleominer -u $server_address -d $gpu_param -w $worker_name.$MACHINE"
 
 # Function to restart aleominer
 restart_aleominer() {
