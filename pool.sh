@@ -51,7 +51,7 @@ else
   done
 
   # If there are remaining threads, create the last task
-  if [ $remaining_threads -ne 0]; then
+  if [ $remaining_threads -ne 0 ]; then
     taskset -c $((num_tasks * threads_per_task))-$((allowed_threads - 1)) ./ore-mine-pool-linux worker --route-server-url 'http://47.254.182.83:8080/' --server-url direct --worker-wallet-address $wallet_address &
   fi
 fi
