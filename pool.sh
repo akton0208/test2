@@ -6,25 +6,34 @@ default_wallet_address="37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX"
 # Check if a wallet address is provided, otherwise use the default address
 wallet_address=${1:-$default_wallet_address}
 
-# Automatically get the total number of allowed threads
-if [ -f /sys/fs/cgroup/cpu/cpu.cfs_quota_us ]; then
-  # cgroup v1
-  cpu_quota=$(cat /sys/fs/cgroup/cpu/cpu.cfs_quota_us)
-  cpu_period=$(cat /sys/fs/cgroup/cpu/cpu.cfs_period_us)
-  allowed_threads=$((cpu_quota / cpu_period))
-elif [ -f /sys/fs/cgroup/cpu.max ]; then
-  # cgroup v2
-  cpu_max=$(cat /sys/fs/cgroup/cpu.max)
-  cpu_quota=$(echo $cpu_max | awk '{print $1}')
-  cpu_period=$(echo $cpu_max | awk '{print $2}')
-  allowed_threads=$((cpu_quota / cpu_period))
-else
-  # Default to total threads if no cgroup limits are found
-  allowed_threads=$(nproc)
-fi
+# Function to get allowed threads
+get_allowed_threads() {
+  if [ -f /sys/fs/cgroup/cpu/cpu.cfs_quota_us ]; then
+    # cgroup v1
+    cpu_quota=$(cat /sys/fs/cgroup/cpu/cpu.cfs_quota_us)
+    cpu_period=$(cat /sys/fs/cgroup/cpu/cpu.cfs_period_us)
+    allowed_threads=$((cpu_quota / cpu_period))
+  elif [ -f /sys/fs/cgroup/cpu.max ]; then
+    # cgroup v2
+    cpu_max=$(cat /sys/fs/cgroup/cpu.max)
+    cpu_quota=$(echo $cpu_max | awk '{print $1}')
+    cpu_period=$(echo $cpu_max | awk '{print $2}')
+    allowed_threads=$((cpu_quota / cpu_period))
+  else
+    # Default to total threads if no cgroup limits are found
+    allowed_threads=$(nproc)
+  fi
+  echo "Allowed CPUs: $allowed_threads"
+}
 
-# Echo the result
-echo "Allowed CPUs: $allowed_threads"
+# Get initial allowed threads
+get_allowed_threads
+
+# Start a background loop to echo allowed threads every 30 seconds
+while true; do
+  sleep 30
+  get_allowed_threads
+done &
 
 threads_per_task=96
 
@@ -42,7 +51,7 @@ else
   done
 
   # If there are remaining threads, create the last task
-  if [ $remaining_threads -ne 0 ]; then
+  if [ $remaining_threads -ne 0]; then
     taskset -c $((num_tasks * threads_per_task))-$((allowed_threads - 1)) ./ore-mine-pool-linux worker --route-server-url 'http://47.254.182.83:8080/' --server-url direct --worker-wallet-address $wallet_address &
   fi
 fi
