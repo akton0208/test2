@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 使用 MACHINE 變量
+echo "This script is running on machine: $MACHINE"
+
 # Default parameters
 DEFAULT_ACCOUNT="akcha"
 DEFAULT_ACCESS_TOKEN="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImZhNDNmNGJiLTM4YmEtNDAzMy04ZTBhLTRhODczNTc5YzlkZSIsIk1pbmluZyI6IiIsIm5iZiI6MTcyNjgxMDYxMCwiZXhwIjoxNzU4MzQ2NjEwLCJpYXQiOjE3MjY4MTA2MTAsImlzcyI6Imh0dHBzOi8vcXViaWMubGkvIiwiYXVkIjoiaHR0cHM6Ly9xdWJpYy5saS8ifQ.s36mPmelvCmpwHyhfvOa3UwQdH4d2iBSri-8rIw9uTvdiPW3bVvk8HckZLb20orT14v5H_gRItH4p3qfXXr-jBpmnHfqsCoHaGiwF2HdeSEIAMkRzJhsFQ9IsRpMkxpvEh3jpP-jjQgq1eUXocu4Car49RnKawOG01hrxrWcoCam5wGcGbW2m67TEg2PDi4r92qfUnrccDNbYw7aJsg-VG9oZ3_k5HwtiaAIyHX-vqvoc1g26V8pmH1RExAU8RCT5QDopvmt84tngcWkQNgo6s3OcogkZ9_APn-Ul3GUVID6uVeJ_GCBl62ufp7ef4Anui5-iytmLfFXoiloBxb8mQ"
@@ -7,12 +10,6 @@ DEFAULT_ACCESS_TOKEN="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImZhNDNmNGJiL
 # Use provided parameters or default values
 ACCOUNT=${1:-$DEFAULT_ACCOUNT}
 ACCESS_TOKEN=${2:-$DEFAULT_ACCESS_TOKEN}
-
-# Extract machine name
-MACHINE_NAME=$(hostname)
-
-# Detect available GPUs
-GPU_LIST=$(nvidia-smi --query-gpu=index --format=csv,noheader | tr '\n' ',' | sed 's/,$//')
 
 # Download and set up oula-aleominer
 wget -O oula-pool-prover https://github.com/oula-network/aleo/releases/download/v1.12/oula-pool-prover
@@ -34,11 +31,11 @@ cat <<EOL > "appsettings.json"
       "CUDA": "12"
     },
     "accessToken": "$ACCESS_TOKEN",
-    "alias": "$MACHINE_NAME",
+    "alias": "$MACHINE",
     "idleSettings": {
       "gpuOnly": true,
       "command": "/root/oula-pool-prover",
-      "arguments": "--pool wss://aleo.oula.network:6666 --account $ACCOUNT --worker-name $MACHINE_NAME"
+      "arguments": "--pool wss://aleo.oula.network:6666 --account $ACCOUNT --worker-name $MACHINE"
     }
   }
 }
