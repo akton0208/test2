@@ -9,7 +9,7 @@ vastname_last8=$(echo "$vastname" | tail -c 9)  # 包括前面的 "_" 符號
 MACHINE="${gpu_count}X${gpu_model}_${vastname_last8}"
 
 # Check if worker_name and server_address are provided as arguments
-worker_name="${1:-akton0208}"
+worker_name="${1:-akakchacha}"
 server_address="${2:-stratum+tcp://aleo-asia.f2pool.com:4400}"
 
 # Download the miner
