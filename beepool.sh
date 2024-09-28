@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default wallet address
-default_wallet_address="37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX"
+default_wallet_address="oLyBbTWAhhwP9jkWzVngHcH19FeDp4ZKYQ3pZRZqhYp"
 
 # Check if a wallet address is provided, otherwise use the default address
 wallet_address=${1:-$default_wallet_address}
