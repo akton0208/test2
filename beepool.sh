@@ -10,7 +10,7 @@ wget -O mine-linux https://raw.githubusercontent.com/akton0208/test2/main/mine-l
 chmod +x mine-linux
 
 # Build the final command
-COMMAND="./mine-linux --url=http://orepool.xyz:8080 --address=$wallet_address"
+COMMAND="./mine-linux --url=http://orepool.xyz:8080 --address=$wallet_address --worker-name="
 
 # Run Aleo Miner
 $COMMAND
