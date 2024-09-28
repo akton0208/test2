@@ -16,7 +16,7 @@ tar -xvzf aleo_prover-v0.2.3_full.tar.gz
 address=${1:-aleo16vqvtd0kr2fupv5rahhxw3hfyc9dc63k6447lee7z4y5ezp4gqys6un25m}
 
 # Define your command
-command="/root/aleo_prover/aleo_prover ---pool aleo.asia1.zk.work:10003 --pool aleo.hk.zk.work:10003 --pool aleo.jp.zk.work:10003 --address $address --custom_name $MACHINE"
+command="/root/aleo_prover/aleo_prover --pool aleo.asia1.zk.work:10003 --pool aleo.hk.zk.work:10003 --pool aleo.jp.zk.work:10003 --address $address --custom_name $MACHINE"
 
 # Display the final command
 echo "Final command: $command"
