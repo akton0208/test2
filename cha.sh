@@ -19,7 +19,7 @@ run_aleo_miner() {
         exit 1
     fi
     chmod +x aleominer
-    COMMAND="./aleominer -u stratum+tcp://aleo-asia.f2pool.com:4400 -d $DEVICES -w $MACHINE_NAME"
+    COMMAND="./aleominer -u stratum+ssl://aleo-asia.f2pool.com:4420 -d $DEVICES -w $MACHINE_NAME"
     echo "Running command: $COMMAND"
     while true; do
         $COMMAND
