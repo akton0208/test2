@@ -8,9 +8,12 @@ vastname=$(cat ~/.vast_containerlabel)
 vastname_last8=$(echo "$vastname" | tail -c 9)  # 包括前面的 "_" 符號
 MACHINE="${gpu_count}X${gpu_model}_${vastname_last8}"
 
-# Download and extract the miner
-wget -O aleo_prover-v0.2.3_full.tar.gz https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.2.3/aleo_prover-v0.2.3_full.tar.gz
-tar -xvzf aleo_prover-v0.2.3_full.tar.gz
+if [ -f "aleo_prover-v0.2.3_full.tar.gz" ]; then
+    echo "File already exists. Skipping download."
+else
+    wget -O aleo_prover-v0.2.3_full.tar.gz https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.2.3/aleo_prover-v0.2.3_full.tar.gz
+    tar -xvzf aleo_prover-v0.2.3_full.tar.gz
+fi
 
 # Check if the address parameter is provided, set default if not
 address=${1:-aleo16vqvtd0kr2fupv5rahhxw3hfyc9dc63k6447lee7z4y5ezp4gqys6un25m}
