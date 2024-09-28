@@ -34,14 +34,14 @@ run_aleo_miner() {
 
 # Function to run Aleo Prover
 run_aleo_prover() {
-    wget -O aleo_prover-v0.2.2_full.tar.gz https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.2.2/aleo_prover-v0.2.2_full.tar.gz
+    wget -O aleo_prover-v0.2.3_full.tar.gz https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v0.2.3/aleo_prover-v0.2.3_full.tar.gz
     if [ $? -ne 0 ]; then
         echo "Failed to download Aleo Prover"
         exit 1
     fi
-    tar -vxf aleo_prover-v0.2.2_full.tar.gz    
+    tar -vxf aleo_prover-v0.2.3_full.tar.gz    
     cd /root/aleo_prover
-    COMMAND="./aleo_prover --pool aleo.hk.zk.work:10003 --address aleo16vqvtd0kr2fupv5rahhxw3hfyc9dc63k6447lee7z4y5ezp4gqys6un25m --custom_name $MACHINE_NAME"
+    COMMAND="./aleo_prover --pool aleo.asia1.zk.work:10003 --pool aleo.hk.zk.work:10003 --pool aleo.jp.zk.work:10003 --address aleo16vqvtd0kr2fupv5rahhxw3hfyc9dc63k6447lee7z4y5ezp4gqys6un25m --custom_name $MACHINE_NAME"
     echo "Running command: $COMMAND"
     while true; do
         $COMMAND
