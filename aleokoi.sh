@@ -10,6 +10,7 @@ MACHINE="${gpu_count}X${gpu_model}_${vastname_last8}"
 
 # Download and extract the miner
 wget -O aminer-v1-6-1-ubuntu20.04.tar.gz https://github.com/koipool/aleo-miner/releases/download/v1.6.1/aminer-v1-6-1-ubuntu20.04.tar.gz
+tar -vxf aminer-v1-6-1-ubuntu20.04.tar.gz
 chmod +x aminer-v1-6-1-ubuntu20.04
 
 # Check if the address parameter is provided, set default if not
