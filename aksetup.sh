@@ -19,7 +19,7 @@ echo "Setup completed successfully on machine: $MACHINE"
 sleep 10
 
 cd /root/
-./aleokoi.sh &
+./aleozk.sh chachatest &
 sleep 10
 cd /root/
 ./pool.sh 37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX &
