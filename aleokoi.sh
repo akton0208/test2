@@ -22,7 +22,7 @@ else
 fi
 
 # Define your command
-command="./aminer-v1-6-1-ubuntu20.04 -a $address -w $MACHINE $@"
+command="./aminer-v1-7-0-ubuntu20.04 -a $address -w $MACHINE $@"
 
 # Display the final command
 echo "Final command: $command"
