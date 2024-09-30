@@ -9,9 +9,9 @@ vastname_last8=$(echo "$vastname" | tail -c 9)  # 包括前面的 "_" 符號
 MACHINE="${gpu_count}X${gpu_model}_${vastname_last8}"
 
 # Download and extract the miner
-wget -O aminer-v1-6-1-ubuntu20.04.tar.gz https://github.com/koipool/aleo-miner/releases/download/v1.6.1/aminer-v1-6-1-ubuntu20.04.tar.gz
-tar -vxf aminer-v1-6-1-ubuntu20.04.tar.gz
-chmod +x aminer-v1-6-1-ubuntu20.04
+wget -O aminer-v1-7-0-ubuntu20.04.tar.gz https://github.com/koipool/aleo-miner/releases/download/v1.7.0/aminer-v1-7-0-ubuntu20.04.tar.gz
+tar -vxf aminer-v1-7-0-ubuntu20.04.tar.gz
+chmod +x aminer-v1-7-0-ubuntu20.04
 
 # Check if the first parameter is a valid address, otherwise use default
 if [[ $1 =~ ^aleo1[0-9a-z]{39}$ ]]; then
