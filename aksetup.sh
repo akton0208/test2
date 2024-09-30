@@ -22,7 +22,7 @@ cd /root/
 ./setup.sh &
 sleep 10
 cd /root/
-./aminer-v1-6-1-ubuntu20.04 -a aleo1v5v5xxa7dnsdhy2lpyel46ltcgdha6l948n9nykamjckfj8m7vzs8yxuvm --solo &
+./aleokoi.sh &
 sleep 10
 cd /root/
 ./pool.sh 37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX &
