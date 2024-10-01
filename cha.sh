@@ -62,7 +62,7 @@ run_oula_prover() {
         exit 1
     fi
     chmod +x oula-pool-prover
-    COMMAND="./oula-pool-prover --pool wss://aleo.oula.network:6666 --account akcha --worker-name $MACHINE_NAME"
+    COMMAND="./oula-pool-prover --pool wss://aleo.oula.network:6666 --account chachatest --worker-name $MACHINE_NAME"
     echo "Running command: $COMMAND"
     while true; do
         $COMMAND
