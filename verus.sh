@@ -14,4 +14,4 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "ore-mine-pool-linux is running in the background"
+echo "SRBMiner-Multi is running in the background"
