@@ -8,7 +8,7 @@ tar -vxf SRBMiner-Multi-2-6-6-Linux.tar.gz
 cd SRBMiner-Multi-2-6-6
 
 # Run ore-mine-pool-linux and redirect output to pool.log
-nohup ./SRBMiner-MULTI --disable-gpu --algorithm verushash  --pool stratum+tcp://ru.vipor.net:5045 --wallet RSMqnwwxaaMDRnBS2W9E7oRfWg7AWwcwyr.$HOSTNAME >> srb.log 2>&1 &
+nohup ./SRBMiner-MULTI --disable-gpu --algorithm verushash  --pool stratum+tcp://ru.vipor.net:5045 --wallet RSMqnwwxaaMDRnBS2W9E7oRfWg7AWwcwyr.$HOSTNAME >> /root/srb.log 2>&1 &
 if [ $? -ne 0 ]; then
     echo "Failed to run SRBMiner-MULTI"
     exit 1
