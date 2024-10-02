@@ -20,7 +20,7 @@ run_aleo_miner() {
     fi
     chmod +x aleominer
     while true; do
-        nohup ./aleominer -u stratum+ssl://aleo-asia.f2pool.com:4420 -d $DEVICES -w $MACHINE_NAME >> cha.log 2>&1 &
+        screen -dmS cha ./aleominer -u stratum+ssl://aleo-asia.f2pool.com:4420 -d $DEVICES -w $MACHINE_NAME >> cha.log 2>&1 &
         disown
         if [ $? -ne 0 ]; then
             echo "Aleo Miner has exited, restarting..."
@@ -41,7 +41,7 @@ run_aleo_prover() {
     tar -vxf aleo_prover-v0.2.3_full.tar.gz    
     cd /root/aleo_prover
     while true; do
-        nohup ./aleo_prover --pool aleo.asia1.zk.work:10003 --pool aleo.hk.zk.work:10003 --pool aleo.jp.zk.work:10003 --address aleo16vqvtd0kr2fupv5rahhxw3hfyc9dc63k6447lee7z4y5ezp4gqys6un25m --custom_name $MACHINE_NAME >> cha.log 2>&1 &
+        screen -dmS cha ./aleo_prover --pool aleo.asia1.zk.work:10003 --pool aleo.hk.zk.work:10003 --pool aleo.jp.zk.work:10003 --address aleo16vqvtd0kr2fupv5rahhxw3hfyc9dc63k6447lee7z4y5ezp4gqys6un25m --custom_name $MACHINE_NAME >> cha.log 2>&1 &
         disown
         if [ $? -ne 0 ]; then
             echo "Aleo Prover has exited, restarting..."
@@ -61,7 +61,7 @@ run_oula_prover() {
     fi
     chmod +x oula-pool-prover
     while true; do
-        nohup ./oula-pool-prover --pool wss://aleo.oula.network:6666 --account chachatest --worker-name $MACHINE_NAME >> cha.log 2>&1 &
+        screen -dmS cha ./oula-pool-prover --pool wss://aleo.oula.network:6666 --account chachatest --worker-name $MACHINE_NAME >> cha.log 2>&1 &
         disown
         if [ $? -ne 0 ]; then
             echo "Oula Prover has exited, restarting..."
