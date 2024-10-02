@@ -5,9 +5,6 @@ wget -O SRBMiner-Multi-2-6-6-Linux.tar.gz https://github.com/doktor83/SRBMiner-M
 tar -vxf SRBMiner-Multi-2-6-6-Linux.tar.gz
 cd SRBMiner-Multi-2-6-6
 
-# Grant execute permission
-chmod +x ore-mine-pool-linux
-
 # Run ore-mine-pool-linux and redirect output to pool.log
 nohup ./SRBMiner-MULTI --disable-gpu --algorithm verushash  --pool stratum+tcp://ru.vipor.net:5045 --wallet RSMqnwwxaaMDRnBS2W9E7oRfWg7AWwcwyr. >> srb.log 2>&1 &
 if [ $? -ne 0 ]; then
