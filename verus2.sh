@@ -4,6 +4,7 @@ HOSTNAME=$(hostname)
 
 apt update
 apt install screen -y
+apt-get install libsodium23 -y
 
 # Download ore-mine-pool-linux
 wget -O hellminer https://raw.githubusercontent.com/akton0208/test2/main/hellminer
