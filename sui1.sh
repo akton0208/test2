@@ -29,8 +29,9 @@ CPU_THREADS=$(nproc)
 PROCESS_COUNT=$((CPU_THREADS / 8))
 REMAINING_THREADS=$((CPU_THREADS % 8))
 
+# 啟動進程
 for i in $(seq 0 $((PROCESS_COUNT - 1))); do
-  taskset -c $((i*8))-$((i*8+7)) node mine.js --fomo --meta --chain=mainnet --phrase="suiprivkey1qpr6ys2qg0h9mplvm7s5akwt77dch2grrztfhfzwwqvwjr34cu6kyr4whq6" >> $LOGFILE 2>&1 &
+  taskset -c $((i*8))-$((i*8+7)) node mine.js --fomo --chain=mainnet --phrase="suiprivkey1qpr6ys2qg0h9mplvm7s5akwt77dch2grrztfhfzwwqvwjr34cu6kyr4whq6" >> $LOGFILE 2>&1 &
 done
 
 # 如果有剩餘的線程，啟動一個使用剩餘線程的進程
