@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # 安裝 Node.js 和 npm
+apt update -y
+apt install curl -y
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 echo 'export NVM_DIR="$HOME/.nvm"' >> $HOME/.bash_profile
 echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> $HOME/.bash_profile
