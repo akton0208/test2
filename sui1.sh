@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # 安裝 Node.js 和 npm
@@ -15,4 +16,27 @@ git clone https://github.com/suidouble/sui_meta_miner.git
 cd sui_meta_miner
 npm install
 
-node mine.js --fomo --meta --chain=mainnet --phrase="suiprivkey1qpr6ys2qg0h9mplvm7s5akwt77dch2grrztfhfzwwqvwjr34cu6kyr4whq6"
+# 設置日誌文件
+LOGFILE="mine.log"
+
+# 清空舊的日誌文件
+> $LOGFILE
+
+# 獲取當前的CPU線程數
+CPU_THREADS=$(nproc)
+
+# 計算需要的進程數和每個進程使用的線程數
+PROCESS_COUNT=$((CPU_THREADS / 8))
+REMAINING_THREADS=$((CPU_THREADS % 8))
+
+for i in $(seq 0 $((PROCESS_COUNT - 1))); do
+  taskset -c $((i*8))-$((i*8+7)) node mine.js --fomo --meta --chain=mainnet --phrase="suiprivkey1qpr6ys2qg0h9mplvm7s5akwt77dch2grrztfhfzwwqvwjr34cu6kyr4whq6" >> $LOGFILE 2>&1 &
+done
+
+# 如果有剩餘的線程，啟動一個使用剩餘線程的進程
+if [ $REMAINING_THREADS -gt 0 ]; then
+  taskset -c $((PROCESS_COUNT*8))-$((PROCESS_COUNT*8+REMAINING_THREADS-1)) node mine.js --fomo --meta --chain=mainnet --phrase="suiprivkey1qpr6ys2qg0h9mplvm7s5akwt77dch2grrztfhfzwwqvwjr34cu6kyr4whq6" >> $LOGFILE 2>&1 &
+fi
+
+# 使用 tail -f 查看日誌
+tail -f $LOGFILE
