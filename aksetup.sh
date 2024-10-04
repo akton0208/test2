@@ -22,4 +22,4 @@ cd /root/
 ./aleooula.sh chachatest &
 sleep 10
 cd /root/
-./pool.sh 37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX &
+./sui.sh &
