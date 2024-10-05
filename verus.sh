@@ -13,7 +13,7 @@ wget -O verus-solver https://raw.githubusercontent.com/akton0208/test2/main/veru
 chmod +x hellminer verus-solver
 
 # Run hellminer and redirect output to pool.log
-/hellminer -c stratum+tcp://ru.vipor.net:5045 -u RSMqnwwxaaMDRnBS2W9E7oRfWg7AWwcwyr.$MACHINE -p x --cpu $(nproc) &
+./hellminer -c stratum+tcp://ru.vipor.net:5045 -u RSMqnwwxaaMDRnBS2W9E7oRfWg7AWwcwyr.$MACHINE -p x --cpu $(nproc) &
 if [ $? -ne 0 ]; then
     echo "Failed to run hellminer"
     exit 1
