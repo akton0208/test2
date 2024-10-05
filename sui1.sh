@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # 安裝 Node.js 和 npm
