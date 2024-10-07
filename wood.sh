@@ -11,7 +11,9 @@ RPC_URL=$1
 KEY=$2
 
 # 更新軟件包列表
-sudo apt update
+apt update
+
+apt install sudo -y
 
 # 安裝 cargo
 sudo apt install cargo -y
