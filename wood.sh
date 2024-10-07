@@ -2,7 +2,7 @@
 
 # 檢查是否提供了 --rpc 和 --key 參數
 if [ -z "$1" ] || [ -z "$2" ]; then
-  echo "請提供 --rpc 和 --key 參數，例如：./wood.sh --rpc RPC --key YOUR_KEY"
+  echo "請提供 --rpc 和 --key 參數，例如：./wood.sh RPC YOUR_KEY"
   exit 1
 fi
 
@@ -32,4 +32,4 @@ cd ~/.cargo/bin
 echo "$KEY" > /root/id.json
 
 # 執行 coal mine 命令
-./coal mine --resource wood --cores $(nproc) --keypair /root/id.json $RPC_URL --priority-fee 500
+./coal mine --resource wood --cores $(nproc) --keypair /root/id.json --rpc $RPC_URL --priority-fee 500
