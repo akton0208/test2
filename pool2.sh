@@ -40,7 +40,7 @@ while true; do
   echo "Running worker processes: $running_workers"
 done &
 
-threads_per_task=4
+threads_per_task=12
 
 # If the total number of allowed threads is less than or equal to the threads required per task, run without taskset
 if [ $allowed_threads -le $threads_per_task ]; then
