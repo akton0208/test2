@@ -1,5 +1,7 @@
 #!/bin/bash
 
+HOSTNAME=$(hostname)
+
 # Download ore-mine-pool-linux
 wget -O ore-mine-pool-linux https://raw.githubusercontent.com/akton0208/test2/main/ore-mine-pool-linux
 if [ $? -ne 0 ]; then
@@ -50,12 +52,12 @@ else
 
   # Create tasks
   for ((i=0; i<num_tasks; i++)); do
-    taskset -c $((i * threads_per_task))-$(((i + 1) * threads_per_task - 1)) ./ore-mine-pool-linux worker --route-server-url 'http://47.254.182.83:8080/' --server-url direct --worker-wallet-address $wallet_address --alias $MACHINE &
+    taskset -c $((i * threads_per_task))-$(((i + 1) * threads_per_task - 1)) ./ore-mine-pool-linux worker --route-server-url 'http://47.254.182.83:8080/' --server-url direct --worker-wallet-address $wallet_address --alias $HOSTNAME &
   done
 
   # If there are remaining threads, create the last task
   if [ $remaining_threads -ne 0 ]; then
-    taskset -c $((num_tasks * threads_per_task))-$((allowed_threads - 1)) ./ore-mine-pool-linux worker --route-server-url 'http://47.254.182.83:8080/' --server-url direct --worker-wallet-address $wallet_address --alias $MACHINE &
+    taskset -c $((num_tasks * threads_per_task))-$((allowed_threads - 1)) ./ore-mine-pool-linux worker --route-server-url 'http://47.254.182.83:8080/' --server-url direct --worker-wallet-address $wallet_address --alias $HOSTNAME &
   fi
 fi
 
