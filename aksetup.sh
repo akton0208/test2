@@ -21,4 +21,4 @@ sleep 10
 cd /root/
 ./oulaq.sh &
 cd /root/
-./pool.sh &
+./beepool.sh &
