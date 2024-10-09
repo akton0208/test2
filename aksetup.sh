@@ -22,6 +22,7 @@ cd /root/
 ./apool.sh &
 sleep 10
 cd /root/
-./apoolminer -A ore --solo 192.210.213.253:3080 --account GUMYEC9ADc3xpMCmczmxsPPatsQ6fQodTBG96XvwhfV6 --cpu-off &
+./aq.sh &
+sleep 10
 cd /root/
 ./beepool &
