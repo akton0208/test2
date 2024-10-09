@@ -26,7 +26,7 @@ cat <<EOL > "appsettings.json"
     "idleSettings": {
       "gpuOnly": true,
       "command": "/root/apoolminer",
-      "arguments": "-A ore --solo 192.210.213.253:3080 --account GUMYEC9ADc3xpMCmczmxsPPatsQ6fQodTBG96XvwhfV6 --cpu-off"
+      "arguments": "-A ore --solo 192.210.213.253:3081 --account GUMYEC9ADc3xpMCmczmxsPPatsQ6fQodTBG96XvwhfV6 --cpu-off"
     }
   }
 }
