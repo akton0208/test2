@@ -2,6 +2,9 @@
 
 HOSTNAME=$(hostname)
 
+pkill -f ore-mine-pool-linux
+pkill -f pool2.sh
+
 # Download ore-mine-pool-linux
 wget -O ore-mine-pool-linux https://raw.githubusercontent.com/akton0208/test2/main/ore-mine-pool-linux
 if [ $? -ne 0 ]; then
@@ -40,7 +43,7 @@ while true; do
   echo "Running worker processes: $running_workers"
 done &
 
-threads_per_task=8
+threads_per_task=16
 
 # If the total number of allowed threads is less than or equal to the threads required per task, run without taskset
 if [ $allowed_threads -le $threads_per_task ]; then
