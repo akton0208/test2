@@ -6,8 +6,8 @@ DEFAULT_ACCESS_TOKEN="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImZhNDNmNGJiL
 ACCESS_TOKEN=${2:-$DEFAULT_ACCESS_TOKEN}
 
 # Download and set up oula-aleominer
-wget -O apoolminer_linux_v2.4.1.tar https://github.com/apool-io/apoolminer/releases/download/v2.4.1/apoolminer_linux_v2.4.1.tar
-tar -vxf apoolminer_linux_v2.4.1.tar
+wget -O apoolminer_linux_v2.4.2.tar https://github.com/apool-io/apoolminer/releases/download/v2.4.2/apoolminer_linux_v2.4.2.tar
+tar -vxf apoolminer_linux_v2.4.2.tar
 
 # Download the file
 wget -O qli-Client-2.2.1-Linux-x64.tar.gz https://dl.qubic.li/downloads/qli-Client-2.2.1-Linux-x64.tar.gz
