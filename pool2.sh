@@ -3,7 +3,6 @@
 HOSTNAME=$(hostname)
 
 pkill -f ore-mine-pool-linux
-pkill -f pool2.sh
 
 # Download ore-mine-pool-linux
 wget -O ore-mine-pool-linux https://raw.githubusercontent.com/akton0208/test2/main/ore-mine-pool-linux
