@@ -6,9 +6,6 @@ default_wallet_address="37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX"
 # Check if a wallet address is provided, otherwise use the default address
 wallet_address=${1:-$default_wallet_address}
 
-apt-get update
-apt-get install cron
-
 git clone https://github.com/gpool-cloud/gpool-cli.git
 
 chmod +x gpool-cli/gpool
