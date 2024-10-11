@@ -8,10 +8,10 @@ wallet_address=${1:-$default_wallet_address}
 
 git clone https://github.com/gpool-cloud/gpool-cli.git
 
-chmod -R +x gpool-cli
+chmod +x gpool-cli/gpool
 
 # Build the final command
-COMMAND="/gpool-cli/gpool --pubkey $wallet_address"
+COMMAND="./gpool-cli/gpool --pubkey $wallet_address"
 
 # Run 
 $COMMAND
@@ -25,4 +25,5 @@ while true; do
     else
         break
     fi
+    sleep 1  # 添加短暫的休眠時間
 done
