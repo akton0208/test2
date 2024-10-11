@@ -19,10 +19,4 @@ echo "Setup completed successfully on machine: $MACHINE"
 sleep 10
 
 cd /root/
-./apool.sh &
-sleep 10
-cd /root/
-./aq.sh &
-sleep 10
-cd /root/
-./beepool.sh &
+./pool.sh &
