@@ -7,23 +7,21 @@ default_wallet_address="37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX"
 wallet_address=${1:-$default_wallet_address}
 
 apt-get update
-apt-get install screen
+apt-get install -y screen
 
-git clone https://github.com/gpool-cloud/gpool-cli.git
+if [ ! -d "gpool-cli" ]; then
+    git clone https://github.com/gpool-cloud/gpool-cli.git
+fi
 
 chmod +x gpool-cli/gpool
 
 # Build the final commands
-COMMAND1="screen -dmS gpu ./gpool-cli/gpool --pubkey $wallet_address"
-COMMAND2="screen -dmS gpu ./gpool-cli/gpool --pubkey $wallet_address --no-pcie"
+COMMAND1="./gpool-cli/gpool --pubkey $wallet_address"
+COMMAND2="./gpool-cli/gpool --pubkey $wallet_address --no-pcie"
 
-# Function to run the commands
+# Function to run the commands inside screen and redirect output to ore.log
 run_command() {
-    $COMMAND1
-    if [ $? -ne 0 ]; then
-        echo "First command failed, trying the second command..."
-        $COMMAND2
-    fi
+    screen -dmS gpu bash -c "$COMMAND1 2>&1 | tee -a ore.log || ($COMMAND2 2>&1 | tee -a ore.log)"
 }
 
 # Run the command
