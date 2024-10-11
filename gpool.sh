@@ -29,17 +29,12 @@ run_command() {
 # Run the command
 run_command
 
-# Check if Miner exits, if so, restart it
+# Restart every 15 minutes with time display
 while true; do
+    for ((i=15; i>0; i--)); do
+        echo "Restarting in $i minutes"
+        sleep 60  # Sleep for 1 minute
+    done
+    pkill -f gpool-cli
     run_command
-    if [ $? -ne 0 ]; then
-        echo "Miner has exited, restarting..."
-        sleep 5
-    else
-        break
-    fi
-    sleep 1  # 添加短暫的休眠時間
 done
-
-# Add a cron job to kill the process every 15 minutes and restart the command
-(crontab -l 2>/dev/null; echo "*/15 * * * * pkill -f gpool-cli && $COMMAND1") | crontab -
