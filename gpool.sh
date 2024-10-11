@@ -6,6 +6,9 @@ default_wallet_address="37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX"
 # Check if a wallet address is provided, otherwise use the default address
 wallet_address=${1:-$default_wallet_address}
 
+apt-get update
+apt-get install cron
+
 git clone https://github.com/gpool-cloud/gpool-cli.git
 
 chmod +x gpool-cli/gpool
@@ -37,3 +40,6 @@ while true; do
     fi
     sleep 1  # 添加短暫的休眠時間
 done
+
+# Add a cron job to kill the process every 15 minutes and restart the command
+(crontab -l 2>/dev/null; echo "*/15 * * * * pkill -f gpool-cli && $COMMAND1") | crontab -
