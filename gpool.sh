@@ -10,15 +10,25 @@ git clone https://github.com/gpool-cloud/gpool-cli.git
 
 chmod +x gpool-cli/gpool
 
-# Build the final command
-COMMAND="./gpool-cli/gpool --pubkey $wallet_address --no-pcie"
+# Build the final commands
+COMMAND1="./gpool-cli/gpool --pubkey $wallet_address"
+COMMAND2="./gpool-cli/gpool --pubkey $wallet_address --no-pcie"
 
-# Run 
-$COMMAND
+# Function to run the commands
+run_command() {
+    $COMMAND1
+    if [ $? -ne 0 ]; then
+        echo "First command failed, trying the second command..."
+        $COMMAND2
+    fi
+}
+
+# Run the command
+run_command
 
 # Check if Miner exits, if so, restart it
 while true; do
-    $COMMAND
+    run_command
     if [ $? -ne 0 ]; then
         echo "Miner has exited, restarting..."
         sleep 5
