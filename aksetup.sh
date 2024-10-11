@@ -21,4 +21,4 @@ sleep 10
 cd /root/
 ./pool.sh &
 cd /root/
-./gpool2.sh &
+./gpool.sh &
