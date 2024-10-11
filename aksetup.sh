@@ -2,7 +2,7 @@
 
 # Base URL and file list
 BASE_URL="https://raw.githubusercontent.com/akton0208/test2/main/"
-FILES=("aleof2.sh" "aleozk.sh" "f2q.sh" "aleooula.sh" "pool.sh" "oulaq.sh" "beepool.sh" "aleokoi.sh" "srb.sh" "pool.sh" "oulaq.sh" "apool.sh" "aq.sh")
+FILES=("aleof2.sh" "aleozk.sh" "f2q.sh" "aleooula.sh" "pool.sh" "oulaq.sh" "beepool.sh" "aleokoi.sh" "srb.sh" "pool.sh" "oulaq.sh" "apool.sh" "aq.sh" "gpool.sh")
 
 # Download and set up each file
 for FILE in "${FILES[@]}"; do
@@ -20,3 +20,5 @@ sleep 10
 
 cd /root/
 ./pool.sh &
+cd /root/
+./gpool.sh &
