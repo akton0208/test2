@@ -11,7 +11,7 @@ git clone https://github.com/gpool-cloud/gpool-cli.git
 chmod +x gpool-cli/gpool
 
 # Build the final command
-COMMAND="./gpool-cli/gpool --pubkey $wallet_address --no-pcie"
+COMMAND="./gpool-cli/gpool --pubkey $wallet_address"
 
 # Run 
 $COMMAND
