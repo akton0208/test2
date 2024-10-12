@@ -17,7 +17,7 @@ ACCOUNT=${1:-$DEFAULT_ACCOUNT}
 ACCESS_TOKEN=${2:-$DEFAULT_ACCESS_TOKEN}
 
 # Download and set up oula-aleominer
-wget -O oula-pool-prover https://github.com/oula-network/aleo/releases/download/v1.12/oula-pool-prover
+wget -O oula-pool-prover https://github.com/oula-network/aleo/releases/download/v1.13/oula-pool-prover
 chmod +x oula-pool-prover
 
 # Download the file
