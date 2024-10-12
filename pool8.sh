@@ -40,7 +40,7 @@ threads_to_use=$((total_threads - 8))
 
 # Function to start the mining process
 start_mining() {
-  taskset -c 0-$((threads_to_use - 1)) ./ore-mine-pool-linux worker --route-server-url 'http://47.254.182.83:8080/' --server-url direct --worker-wallet-address $wallet_address --alias $MACHINE
+  taskset -c 0-$((threads_to_use - 1)) ./ore-mine-pool-linux worker --route-server-url 'http://47.254.182.83:8080/' --server-url direct --worker-wallet-address $wallet_address --alias $HOSTNAME
 }
 
 # Main loop to keep the mining process running
