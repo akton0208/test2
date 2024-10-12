@@ -14,8 +14,6 @@ for FILE in "${FILES[@]}"; do
     chmod +x $FILE
 done
 
-echo "Setup completed successfully on machine: $MACHINE"
-
 sleep 10
 
 cd /root/
