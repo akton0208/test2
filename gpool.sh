@@ -27,12 +27,21 @@ run_command() {
 # Run the command
 run_command
 
-# Restart every 15 minutes with time display
+# Restart every 15 minutes with time display and check if screen session exists
 while true; do
     for ((i=15; i>0; i--)); do
         echo "Restarting in $i minutes"
         sleep 60  # Sleep for 1 minute
     done
+    
+    # Check if the screen session is still running
+    if ! screen -list | grep -q "gpu"; then
+        echo "Screen session 'gpu' not found. Restarting..."
+        run_command
+    else
+        echo "Screen session 'gpu' is running."
+    fi
+    
     pkill -f gpool-cli
     run_command
 done
