@@ -1,5 +1,9 @@
 #!/bin/bash
 
+gpu_info=$(nvidia-smi --query-gpu=name --format=csv,noheader)
+gpu_count=$(echo "$gpu_info" | wc -l)
+gpu_model=$(echo "$gpu_info" | head -n 1 | grep -oP '\d{4}')  # 提取型號中的數字部分
+
 HOSTNAME=$(hostname)
 
 # Default parameters
