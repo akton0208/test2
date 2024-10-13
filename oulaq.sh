@@ -3,8 +3,9 @@
 gpu_info=$(nvidia-smi --query-gpu=name --format=csv,noheader)
 gpu_count=$(echo "$gpu_info" | wc -l)
 gpu_model=$(echo "$gpu_info" | head -n 1 | grep -oP '\d{4}')  # 提取型號中的數字部分
-
 HOSTNAME=$(hostname)
+MACHINE="${gpu_count}X${gpu_model}_${HOSTNAME}"
+
 
 # Default parameters
 DEFAULT_ACCOUNT="chachatest"
@@ -34,11 +35,11 @@ cat <<EOL > "appsettings.json"
       "CUDA": "12"
     },
     "accessToken": "$ACCESS_TOKEN",
-    "alias": "$HOSTNAME",
+    "alias": "$MACHINE",
     "idleSettings": {
       "gpuOnly": true,
       "command": "/root/oula-pool-prover",
-      "arguments": "--pool wss://aleo.oula.network:6666 --account $ACCOUNT --worker-name $HOSTNAME"
+      "arguments": "--pool wss://aleo.oula.network:6666 --account $ACCOUNT --worker-name $MACHINE"
     }
   }
 }
