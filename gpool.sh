@@ -9,13 +9,13 @@ wallet_address=${1:-$default_wallet_address}
 apt-get update
 apt-get install -y screen
 
-wget https://github.com/gpool-cloud/gpool-cli/raw/refs/heads/main/gpool
+wget -O gpool https://github.com/gpool-cloud/gpool-cli/raw/refs/heads/main/gpool
 
-chmod +x gpool-cli/gpool
+chmod +x gpool
 
 # Build the final commands
-COMMAND1="./gpool-cli/gpool --pubkey $wallet_address"
-COMMAND2="./gpool-cli/gpool --pubkey $wallet_address --no-pcie"
+COMMAND1="./gpool --pubkey $wallet_address"
+COMMAND2="./gpool --pubkey $wallet_address --no-pcie"
 
 # Function to run the commands inside screen and redirect output to ore.log
 run_command() {
