@@ -48,10 +48,14 @@ module.exports = {
   apps: [{
     name: 'gpool',
     script: './gpool',
-    args: '--pubkey $wallet_address --no-pcie',
-    restart_delay: 900000, // 15 minutes in milliseconds
-    autorestart: true,
-    watch: false
+    args: '--pubkey $wallet_address',
+    restart_delay: 900000, // 15 分钟（以毫秒为单位）
+    autorestart: true, // 自动重启
+    watch: false, // 不监视文件变化
+    min_uptime: 5000, // 最小正常运行时间（毫秒）
+    exp_backoff_restart_delay: 100, // 指数退避重启延迟（毫秒）
+    kill_timeout: 1600, // 杀死进程前的等待时间（毫秒）
+    listen_timeout: 8000 // 等待应用程序启动的时间（毫秒）
   }]
 };
 EOL
