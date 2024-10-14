@@ -9,9 +9,7 @@ wallet_address=${1:-$default_wallet_address}
 apt-get update
 apt-get install -y screen
 
-if [ ! -d "gpool-cli" ]; then
-    git clone https://github.com/gpool-cloud/gpool-cli.git
-fi
+wget https://github.com/gpool-cloud/gpool-cli/raw/refs/heads/main/gpool
 
 chmod +x gpool-cli/gpool
 
