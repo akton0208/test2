@@ -12,22 +12,35 @@ if ! apt-get update; then
     exit 1
 fi
 
-if ! apt-get install -y wget curl; then
-    echo "Failed to install wget and curl"
-    exit 1
+# Check if wget and curl are installed, if not, install them
+if ! command -v wget &> /dev/null || ! command -v curl &> /dev/null; then
+    if ! apt-get install -y wget curl; then
+        echo "Failed to install wget and curl"
+        exit 1
+    fi
+else
+    echo "wget and curl are already installed"
 fi
 
-# Install Node.js
-curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-if ! apt-get install -y nodejs; then
-    echo "Failed to install Node.js"
-    exit 1
+# Check if Node.js is installed, if not, install it
+if ! command -v node &> /dev/null; then
+    curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+    if ! apt-get install -y nodejs; then
+        echo "Failed to install Node.js"
+        exit 1
+    fi
+else
+    echo "Node.js is already installed"
 fi
 
-# Install PM2
-if ! npm install -g pm2; then
-    echo "Failed to install PM2"
-    exit 1
+# Check if PM2 is installed, if not, install it
+if ! command -v pm2 &> /dev/null; then
+    if ! npm install -g pm2; then
+        echo "Failed to install PM2"
+        exit 1
+    fi
+else
+    echo "PM2 is already installed"
 fi
 
 # Download gpool
@@ -52,7 +65,7 @@ module.exports = {
     restart_delay: 900000, // 15 分钟（以毫秒为单位）
     autorestart: true, // 自动重启
     watch: false, // 不监视文件变化
-    min_uptime: 5000, // 最小正常运行时间（毫秒）
+    min_uptime: 30000, // 最小正常运行时间（毫秒）
     exp_backoff_restart_delay: 100, // 指数退避重启延迟（毫秒）
     kill_timeout: 1600, // 杀死进程前的等待时间（毫秒）
     listen_timeout: 8000 // 等待应用程序启动的时间（毫秒）
@@ -61,4 +74,9 @@ module.exports = {
 EOL
 
 # Start the application with PM2
-pm2 start ecosystem.config.js
+if ! pm2 start ecosystem.config.js; then
+    echo "Failed to start the application with PM2"
+    exit 1
+fi
+
+echo "Setup completed successfully!"
