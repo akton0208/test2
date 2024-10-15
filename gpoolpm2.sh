@@ -5,7 +5,7 @@ default_wallet_address="37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX"
 
 # Function to create PM2 ecosystem file
 create_pm2_config() {
-    if [ "$1" -eq 1 ]; then
+    if [ "$1" == "1" ]; then
         cat <<EOL > ecosystem.config.js
 module.exports = {
   apps: [{
@@ -22,7 +22,7 @@ module.exports = {
   }]
 };
 EOL
-    elif [ "$1" -eq 2 ]; then
+    elif [ "$1" == "2" ]; then
         cat <<EOL > ecosystem.config.js
 module.exports = {
   apps: [{
@@ -48,8 +48,14 @@ EOL
 # Main script logic
 case "$1" in
     start)
+        # Ensure the PM2 configuration argument is provided
+        if [ -z "$2" ]; then
+            echo "Missing PM2 configuration argument. Please use 1 or 2."
+            exit 1
+        fi
+
         # Check if a wallet address is provided, otherwise use the default address
-        wallet_address=${2:-$default_wallet_address}
+        wallet_address=${3:-$default_wallet_address}
 
         # Update system and install necessary packages
         if ! apt-get update; then
@@ -89,7 +95,7 @@ case "$1" in
         fi
 
         # Create PM2 ecosystem file
-        create_pm2_config "$3"
+        create_pm2_config "$2"
 
         # Start the application with PM2
         if ! pm2 start ecosystem.config.js; then
