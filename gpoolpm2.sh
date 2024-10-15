@@ -94,6 +94,18 @@ case "$1" in
             echo "PM2 is already installed"
         fi
 
+        # Download gpool
+        if ! wget -O gpool https://github.com/gpool-cloud/gpool-cli/raw/refs/heads/main/gpool; then
+            echo "Failed to download gpool"
+            exit 1
+        fi
+
+        # Make gpool executable
+        if ! chmod +x gpool; then
+            echo "Failed to make gpool executable"
+            exit 1
+        fi
+
         # Create PM2 ecosystem file
         create_pm2_config "$2"
 
