@@ -80,7 +80,6 @@ module.exports = {
     instances: 1,
     autorestart: true,
     watch: false,
-    max_memory_restart: '8G',
     env: {
       HOSTNAME: process.env.HOSTNAME || 'default-hostname',
       wallet_address: process.env.wallet_address || '37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX'
