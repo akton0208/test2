@@ -11,7 +11,7 @@ module.exports = {
   apps: [{
     name: 'gpool',
     script: './gpool',
-    args: '--pubkey $wallet_address',
+    args: '--pubkey $wallet_address --pool 3.64.194.119:10475',
     restart_delay: 600000, // 10 minutes (in milliseconds)
     autorestart: true, // Automatically restart
     watch: false, // Do not watch for file changes
@@ -28,7 +28,7 @@ module.exports = {
   apps: [{
     name: 'gpool',
     script: './gpool',
-    args: '--pubkey $wallet_address --no-pcie',
+    args: '--pubkey $wallet_address --no-pcie --pool 3.64.194.119:10475',
     restart_delay: 600000, // 10 minutes (in milliseconds)
     autorestart: true, // Automatically restart
     watch: false, // Do not watch for file changes
