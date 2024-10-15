@@ -129,7 +129,14 @@ case "$1" in
             echo "Failed to stop and delete the application with PM2"
             exit 1
         fi
-        echo "Application stopped and deleted successfully!"
+
+        # Remove .gpool directory
+        if ! rm -r .gpool; then
+            echo "Failed to remove .gpool directory"
+            exit 1
+        fi
+
+        echo "Application stopped, deleted, and .gpool directory removed successfully!"
         ;;
     *)
         echo "Invalid command. Use start, restart, or stop."
