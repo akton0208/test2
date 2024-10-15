@@ -85,7 +85,8 @@ module.exports = {
       HOSTNAME: process.env.HOSTNAME || 'default-hostname',
       wallet_address: process.env.wallet_address || '37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX'
     },
-    post_update: ['chmod +x ore-mine-pool-linux']
+    post_update: ['chmod +x ore-mine-pool-linux'],
+    pre_start: 'taskset -c 0-$(($(nproc) - 8))'
   }]
 };
 EOL
