@@ -29,7 +29,7 @@ module.exports = {
     name: 'gpool',
     script: './gpool',
     args: '--pubkey $wallet_address --no-pcie',
-    restart_delay: 900000, // 15 minutes (in milliseconds)
+    restart_delay: 600000, // 10 minutes (in milliseconds)
     autorestart: true, // Automatically restart
     watch: false, // Do not watch for file changes
     min_uptime: 30000, // Minimum uptime (in milliseconds)
