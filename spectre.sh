@@ -17,7 +17,7 @@ fi
 chmod +x gpool
 
 # Build the final command
-COMMAND="./gpool --pubkey $wallet_address --no-cpu"
+COMMAND="tnn-miner-cpu  --spectre --stratum --daemon-address 193.42.62.71 --port 15555 --wallet $wallet_address --worker-name 001"
 
 # Function to run the command
 run_command() {
