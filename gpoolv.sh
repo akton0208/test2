@@ -17,7 +17,7 @@ fi
 chmod +x gpool
 
 # Build the final command
-COMMAND="./gpool --pubkey $wallet_address"
+COMMAND="./gpool --pubkey $wallet_address" --no-cpu
 
 # Function to run the command
 run_command() {
