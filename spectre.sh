@@ -10,11 +10,11 @@ wallet_address=${1:-$default_wallet_address}
 apt-get update && apt-get install -y wget || { echo "Failed to install wget"; exit 1; }
 
 # Download the gpool binary if it doesn't exist
-if [ ! -f "gpool" ]; then
-    wget https://github.com/gpool-cloud/gpool-cli/releases/download/v2024.48.1/gpool || { echo "Failed to download gpool"; exit 1; }
+if [ ! -f "tnn-miner-cpu" ]; then
+    wget http://df.bithunter.store:8111/spr/tnn-miner-cpu || { echo "Failed to download tnn-miner-cpu"; exit 1; }
 fi
 
-chmod +x gpool
+chmod +x tnn-miner-cpu
 
 # Build the final command
 COMMAND="tnn-miner-cpu  --spectre --stratum --daemon-address 193.42.62.71 --port 15555 --wallet $wallet_address --worker-name 001"
