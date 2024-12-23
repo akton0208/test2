@@ -2,7 +2,7 @@
 
 # Base URL and file list
 BASE_URL="https://raw.githubusercontent.com/akton0208/test2/main/"
-FILES=("gpoolv.sh" "pool8v.sh")
+FILES=("gpoolv.sh" "spectre.sh")
 
 # Download and set up each file
 for FILE in "${FILES[@]}"; do
@@ -17,6 +17,6 @@ done
 sleep 10
 
 cd /root/
-./pool8v.sh &
+./spectre.sh &
 cd /root/
 ./gpoolv.sh &
