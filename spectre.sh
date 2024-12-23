@@ -17,7 +17,7 @@ fi
 chmod +x tnn-miner-cpu
 
 # Build the final command
-COMMAND="./tnn-miner-cpu  --spectre --stratum --daemon-address 193.42.62.71 --port 15555 --wallet $wallet_address --dev-fee 1 --worker-name 001"
+COMMAND="./tnn-miner-cpu  --spectre --stratum --daemon-address 193.42.62.71 --port 15555 --wallet $wallet_address --dev-fee 1 --worker-name AK --threads 60"
 
 # Function to run the command
 run_command() {
