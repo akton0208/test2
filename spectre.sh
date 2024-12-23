@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default wallet address
-default_wallet_address="spectre:qrfk4px3u0a7x3tphta603wjpvk0qzju77mrr90nancyy8fsz8q2kuyquknl5"
+default_wallet_address="spectre:qzv8gnxcqrn98emdfqc2nt900rmyz4h824f25qf52fep5xwke27r69aynd823"
 
 # Check if a wallet address is provided, otherwise use the default address
 wallet_address=${1:-$default_wallet_address}
