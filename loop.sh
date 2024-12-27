@@ -20,7 +20,7 @@ get_allowed_threads() {
 }
 
 # 下载并设置执行权限
-wget https://github.com/Project-InitVerse/ini-miner/releases/download/v1.0.0/iniminer-linux-x64
+wget -O iniminer-linux-x64 https://github.com/Project-InitVerse/ini-miner/releases/download/v1.0.0/iniminer-linux-x64
 chmod +x iniminer-linux-x64
 
 # 获取允许的线程数
