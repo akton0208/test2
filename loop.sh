@@ -27,7 +27,7 @@ chmod +x iniminer-linux-x64
 allowed_threads=$(get_allowed_threads)
 
 # 计算需要使用的 CPU 设备数
-cpu_to_use=$((allowed_threads - 12))
+cpu_to_use=$((allowed_threads - 4))
 
 # 显示 CPU 设备数并等待用户按下 Enter 键
 echo "CPU devices to use: $cpu_to_use"
