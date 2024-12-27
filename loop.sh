@@ -16,16 +16,24 @@ get_allowed_threads() {
     # Default to total threads if no cgroup limits are found
     allowed_threads=$(nproc)
   fi
-  echo "Allowed CPUs: $allowed_threads"
+  echo $allowed_threads
 }
 
+# 下载并设置执行权限
 wget https://github.com/Project-InitVerse/ini-miner/releases/download/v1.0.0/iniminer-linux-x64
 chmod +x iniminer-linux-x64
 
+# 获取允许的线程数
 allowed_threads=$(get_allowed_threads)
 
-cpu_to_use=$((allowed_threads - 6))
+# 计算需要使用的 CPU 设备数
+cpu_to_use=$((allowed_threads - 12))
 
+# 显示 CPU 设备数并等待用户按下 Enter 键
+echo "CPU devices to use: $cpu_to_use"
+read -p "Press Enter to continue..."
+
+# 生成 --cpu-devices 参数
 cpu_devices=""
 for ((i=1; i<=cpu_to_use; i++))
 do
