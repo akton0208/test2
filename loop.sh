@@ -31,7 +31,6 @@ cpu_to_use=$((allowed_threads - 12))
 
 # 显示 CPU 设备数并等待用户按下 Enter 键
 echo "CPU devices to use: $cpu_to_use"
-read -p "Press Enter to continue..."
 
 # 生成 --cpu-devices 参数
 cpu_devices=""
