@@ -2,7 +2,7 @@
 
 MACHINE=$(hostname)
 # Default parameters
-DEFAULT_ACCESS_TOKEN="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6ImZhNDNmNGJiLTM4YmEtNDAzMy04ZTBhLTRhODczNTc5YzlkZSIsIk1pbmluZyI6IiIsIm5iZiI6MTcyNjgxMDYxMCwiZXhwIjoxNzU4MzQ2NjEwLCJpYXQiOjE3MjY4MTA2MTAsImlzcyI6Imh0dHBzOi8vcXViaWMubGkvIiwiYXVkIjoiaHR0cHM6Ly9xdWJpYy5saS8ifQ.s36mPmelvCmpwHyhfvOa3UwQdH4d2iBSri-8rIw9uTvdiPW3bVvk8HckZLb20orT14v5H_gRItH4p3qfXXr-jBpmnHfqsCoHaGiwF2HdeSEIAMkRzJhsFQ9IsRpMkxpvEh3jpP-jjQgq1eUXocu4Car49RnKawOG01hrxrWcoCam5wGcGbW2m67TEg2PDi4r92qfUnrccDNbYw7aJsg-VG9oZ3_k5HwtiaAIyHX-vqvoc1g26V8pmH1RExAU8RCT5QDopvmt84tngcWkQNgo6s3OcogkZ9_APn-Ul3GUVID6uVeJ_GCBl62ufp7ef4Anui5-iytmLfFXoiloBxb8mQ"
+DEFAULT_ACCESS_TOKEN="eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjE3ZjRmNGQ4LTFhNDgtNDkyOC04YjI3LWI4NDdhMTZmMmUwYSIsIk1pbmluZyI6IiIsIm5iZiI6MTczNTYxODM1NiwiZXhwIjoxNzY3MTU0MzU2LCJpYXQiOjE3MzU2MTgzNTYsImlzcyI6Imh0dHBzOi8vcXViaWMubGkvIiwiYXVkIjoiaHR0cHM6Ly9xdWJpYy5saS8ifQ.AbJP5Hvh2rdnWLxqdGwydkB0GlpyugPkfQSphsscpWX3cAbfmUHhCnXfFLPpahL8voj6PTVjkJJqGr6_DYR5r1uFG8qtc1Dca40ptVjHJne994zwoOzREX0z6-zgN7lXMG934ir98ijw_e7jsIJ4wDLxD2NPNfxlS6QmyiftBuwQ6RFlHT8UN-15CM1amQStHcjBXwPZfmgKI0CNMfSGNiq2bDG3_qyUur7GU8MQ-w03wqeywdVUlIIameNiqkGydLkaMTCaygL9bdxWAXoGLIMBO9XM-ol19ZREfEztj9LU8gnAfGnpiAR3XWaQuLTB7gPpxfLSSO__2ofDC9JFOQ"
 ACCESS_TOKEN=${2:-$DEFAULT_ACCESS_TOKEN}
 
 # Download and set up oula-aleominer
@@ -29,7 +29,7 @@ cat <<EOL > "appsettings.json"
     "idleSettings": {
       "gpuOnly": true,
       "command": "/root/gpool-cli/gpool",
-      "arguments": "--pubkey 37BgmeJABVhQe9xzuG7UdD6Dy2QF7UAj2Yv7pY37yqwX"
+      "arguments": "--pubkey J4BEb6YfzHRjNUAcSwDe1dDhLDRp7QTi1C6nnCmwAdC8"
     }
   }
 }
